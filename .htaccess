@@ -1,0 +1,2 @@
+# Фирменная страница 404 для хостингов на Apache (Beget, Timeweb)
+ErrorDocument 404 /404.html

@@ -1,0 +1,716 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Гараж 360 — ремонт и обслуживание авто под ключ</title>
+  <meta name="description" content="Автосервис «Гараж 360»: диагностика, ТО, ремонт ходовой и тормозов, шиномонтаж, автоэлектрика. Фиксированная цена до начала работ, гарантия и онлайн-запись.">
+  <meta name="theme-color" content="#0B0C0E">
+  <meta name="color-scheme" content="dark">
+
+  <!-- ЗАМЕНИТЬ: {{SITE_URL}} — адрес сайта без слэша на конце, например https://garage360.ru -->
+  <link rel="canonical" href="{{SITE_URL}}/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="Гараж 360">
+  <meta property="og:title" content="Гараж 360 — ремонт и обслуживание авто под ключ">
+  <meta property="og:description" content="Диагностика, ТО, ходовая, тормоза, шиномонтаж. Фиксированная цена до начала работ и гарантия.">
+  <meta property="og:url" content="{{SITE_URL}}/">
+  <meta property="og:image" content="{{SITE_URL}}/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Гараж 360 — автосервис полного цикла">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Стартовые состояния анимаций включаются, только если пользователь не просил уменьшить движение -->
+  <script>
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.classList.add('anim');
+    }
+  </script>
+
+  <!-- Структурированные данные. ЗАМЕНИТЬ на реальные данные клиента -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AutoRepair",
+    "name": "Гараж 360",
+    "url": "{{SITE_URL}}/",
+    "image": "{{SITE_URL}}/assets/img/og-image.png",
+    "telephone": "+7 000 000-00-00",
+    "address": { "@type": "PostalAddress", "addressLocality": "Город", "streetAddress": "ул. Примерная, 0", "addressCountry": "RU" },
+    "openingHours": ["Mo-Fr 09:00-20:00", "Sa-Su 10:00-18:00"],
+    "priceRange": "₽₽"
+  }
+  </script>
+</head>
+<body>
+  <!-- Спрайт иконок -->
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-go" viewBox="0 0 24 24"><g fill="currentColor"><rect x="4" y="2.5" width="3.6" height="3.6" rx=".7" opacity=".55"/><rect x="8.4" y="6.6" width="3.6" height="3.6" rx=".7" opacity=".8"/><rect x="12.8" y="10.2" width="4.2" height="4.2" rx=".8"/><rect x="8.4" y="14.4" width="3.6" height="3.6" rx=".7" opacity=".8"/><rect x="4" y="18.4" width="3.6" height="3.6" rx=".7" opacity=".55"/><rect x="4" y="10.5" width="3.6" height="3.6" rx=".7" opacity=".4"/></g></symbol>
+    <symbol id="i-gear" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" d="M10.3 2h3.4l.5 2.6 1.9.8 2.2-1.5 2.4 2.4-1.5 2.2.8 1.9 2.6.5v3.4l-2.6.5-.8 1.9 1.5 2.2-2.4 2.4-2.2-1.5-1.9.8-.5 2.6h-3.4l-.5-2.6-1.9-.8-2.2 1.5-2.4-2.4 1.5-2.2-.8-1.9L2 13.7v-3.4l2.6-.5.8-1.9-1.5-2.2 2.4-2.4 2.2 1.5 1.9-.8z"/><circle cx="12" cy="12" r="3.4" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+    <symbol id="i-oil" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" d="M3 9h4l2-2h4l1.5 2H18l3-2v3l-4 6.5a1 1 0 0 1-.9.5H5a2 2 0 0 1-2-2zM9 7V5M7 5h4M20.5 14.5s-1.2 1.6-1.2 2.5a1.2 1.2 0 0 0 2.4 0c0-.9-1.2-2.5-1.2-2.5z"/></symbol>
+    <symbol id="i-susp" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M12 2v3M12 19v3M8 5h8M8 19h8M9 7l6 2-6 2 6 2-6 2 6 2"/></symbol>
+    <symbol id="i-brake" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M5.2 6.6A9.8 9.8 0 0 1 9 3.2"/></symbol>
+    <symbol id="i-wheel" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="1.5"/><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" d="M12 7v-4.5M12 17v4.5M7 12H2.5M17 12h4.5"/></symbol>
+    <symbol id="i-chip" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3M9.5 12.5l1.5 1.5 3.5-4"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" d="M13 2 4 14h7l-1 8 9-12h-7z"/></symbol>
+    <symbol id="i-wrench" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" d="M14.7 3.3a5 5 0 0 0-6 6.6L3 15.6V21h5.4l5.7-5.7a5 5 0 0 0 6.6-6l-3.2 3.2-3.3-.8-.8-3.3z"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" d="M12 3 4.5 6v5.5c0 4.6 3.2 8.4 7.5 9.5 4.3-1.1 7.5-4.9 7.5-9.5V6z"/><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="m8.8 12.2 2.2 2.2 4.4-4.6"/></symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" d="M6 2.8h8l4 4V21H6z"/><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" d="M9 11h6M9 14.5h6M9 18h3.5"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" d="M3 8a2 2 0 0 1 2-2h2.5L9 4h6l1.5 2H19a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><circle cx="12" cy="13" r="3.5" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" d="M4 5h16v11H9l-5 4z"/></symbol>
+    <symbol id="i-box" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" d="m12 2.8 8 4.4v9.6l-8 4.4-8-4.4V7.2zM4 7.2l8 4.4 8-4.4M12 11.6v9.6"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.5"/><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-left" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="m15 5-7 7 7 7"/></symbol>
+    <symbol id="i-right" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" d="M21 3 3 10.5l7 2.5 2.5 7z"/><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" d="m10 13 4.5-4.5"/></symbol>
+    <symbol id="i-badge" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="17" cy="17" r="3.6" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
+
+  <!-- Верхняя плашка-объявление. ЗАМЕНИТЬ текст акции -->
+  <div class="topbar">
+    <p class="topbar__text">Сезонная переобувка со&nbsp;скидкой 15% <span class="topbar__mark">пример</span> <a href="#booking">Записаться</a></p>
+  </div>
+
+  <!-- 1. ШАПКА. ЗАМЕНИТЬ: название «Гараж 360» встречается в title, meta, логотипе, подвале и ld+json -->
+  <header class="header" id="top">
+    <div class="header__pill">
+      <a class="logo" href="#top" aria-label="Гараж 360 — на главную">
+        <span class="logo__mark" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-gear"/></svg></span>
+        <span class="logo__text">Гараж <b>360</b></span>
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Основное меню">
+        <ul class="nav__list">
+          <li><a href="#about">О&nbsp;сервисе</a></li>
+          <li><a href="#services">Услуги</a></li>
+          <li><a href="#calc">Цены</a></li>
+          <li><a href="#brands">Марки</a></li>
+          <li><a href="#reviews">Отзывы</a></li>
+          <li><a href="#contacts">Контакты</a></li>
+        </ul>
+        <a class="btn btn--red nav__cta" href="#booking">Записаться онлайн</a>
+      </nav>
+
+      <div class="header__actions">
+        <!-- ЗАМЕНИТЬ: телефон -->
+        <a class="icon-btn" href="tel:+70000000000" aria-label="Позвонить: +7 000 000-00-00">
+          <svg aria-hidden="true"><use href="#i-phone"/></svg>
+        </a>
+        <a class="btn btn--chip header__cta" href="#booking">
+          <span class="btn__sq" aria-hidden="true"><svg><use href="#i-go"/></svg></span>
+          Записаться
+        </a>
+        <button class="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- 2. ПЕРВЫЙ ЭКРАН + 3D-машина -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__grid" aria-hidden="true"></div>
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <p class="pill pill--dark hero__badge"><span class="pulse" aria-hidden="true"></span>Автосервис полного цикла · 9:00–20:00</p>
+          <h1 class="hero__title" id="hero-title">
+            <span class="word">Ремонт</span>
+            <span class="word">и&nbsp;обслуживание</span>
+            <span class="word">авто</span>
+            <span class="word word--red">под&nbsp;ключ</span>
+          </h1>
+          <p class="hero__lead">
+            Начинаем с&nbsp;диагностики, фиксируем цену до&nbsp;начала работ и&nbsp;даём гарантию на&nbsp;ремонт.
+            Присылаем фотоотчёт — вы&nbsp;видите всё, что происходит с&nbsp;машиной.
+          </p>
+          <div class="hero__actions">
+            <a class="btn btn--white btn--lg" href="#booking">
+              <span class="btn__sq btn__sq--red" aria-hidden="true"><svg><use href="#i-go"/></svg></span>
+              Записаться
+            </a>
+            <a class="text-link" href="tel:+70000000000" aria-label="Позвонить по номеру +7 000 000-00-00">
+              <svg aria-hidden="true"><use href="#i-phone"/></svg>
+              <span>или позвоните: <b>+7 000 000-00-00</b></span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 3D-сцена: машина «вылетает» из окна. Логика — assets/js/hero3d.js -->
+        <div class="hero__stage" id="hero-stage">
+          <img class="hero__fallback" src="assets/img/car.svg" width="560" height="220"
+               alt="Иллюстрация: красный седан — символ автосервиса «Гараж 360»">
+          <canvas class="hero__canvas" id="hero-canvas" aria-hidden="true"></canvas>
+          <p class="hero__stage-note" aria-hidden="true">Потяните, чтобы повернуть</p>
+        </div>
+      </div>
+
+      <div class="hero__strip">
+        <p class="hero__strip-title">Обслуживаем популярные марки:</p>
+        <!-- ЗАМЕНИТЬ: марки под специализацию клиента (в двух местах: здесь и в секции «Марки») -->
+        <div class="marquee" data-marquee="40">
+          <ul class="marquee__track" aria-label="Марки автомобилей">
+            <li class="wordmark wm-1">LADA</li>
+            <li class="wordmark wm-2">Kia</li>
+            <li class="wordmark wm-3">Hyundai</li>
+            <li class="wordmark wm-4">TOYOTA</li>
+            <li class="wordmark wm-5">Volkswagen</li>
+            <li class="wordmark wm-6">Škoda</li>
+            <li class="wordmark wm-1">HAVAL</li>
+            <li class="wordmark wm-3">Chery</li>
+            <li class="wordmark wm-2">Geely</li>
+            <li class="wordmark wm-4">Renault</li>
+            <li class="wordmark wm-5">Nissan</li>
+            <li class="wordmark wm-6">Mazda</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. О СЕРВИСЕ: бенто-карточки + цифры -->
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="container">
+        <header class="section__head section__head--center" data-reveal>
+          <p class="pill"><svg aria-hidden="true"><use href="#i-shield"/></svg>О&nbsp;сервисе</p>
+          <h2 class="section__title" id="about-title">Прозрачный ремонт: от&nbsp;диагностики до&nbsp;гарантии</h2>
+        </header>
+
+        <div class="bento" data-reveal-group>
+          <article class="bento__card">
+            <div class="bento__art art-scan" aria-hidden="true">
+              <div class="tile tile--lg tile--center"><svg><use href="#i-chip"/></svg></div>
+              <div class="tile tile--code float" style="--d:0">P0301</div>
+              <div class="tile tile--code float" style="--d:1">ABS</div>
+              <div class="tile tile--code float" style="--d:2">SRS</div>
+              <div class="tile tile--code tile--ok float" style="--d:3">OK</div>
+            </div>
+            <div class="bento__body">
+              <h3>Честная диагностика</h3>
+              <p>Компьютерная и&nbsp;ручная проверка на&nbsp;подъёмнике. Показываем неисправности вживую или на&nbsp;фото — без «надо менять всё».</p>
+            </div>
+          </article>
+
+          <article class="bento__card">
+            <div class="bento__art art-estimate" aria-hidden="true">
+              <div class="window">
+                <div class="window__bar"><i></i><i></i><i></i></div>
+                <ul class="estimate">
+                  <li><span>Колодки передние</span><b>2 400 ₽</b></li>
+                  <li><span>Работа</span><b>1 200 ₽</b></li>
+                  <li><span>Жидкость DOT-4</span><b>650 ₽</b></li>
+                  <li class="estimate__total"><span>Итого, фиксировано</span><b>4 250 ₽</b></li>
+                </ul>
+                <span class="stamp">Согласовано</span>
+              </div>
+            </div>
+            <div class="bento__body">
+              <h3>Фиксированная смета</h3>
+              <p>Согласуем стоимость работ и&nbsp;запчастей до&nbsp;начала ремонта. Цена в&nbsp;чеке совпадает со&nbsp;сметой. Суммы на&nbsp;иллюстрации — пример.</p>
+            </div>
+          </article>
+
+          <article class="bento__card">
+            <div class="bento__art art-warranty" aria-hidden="true">
+              <div class="tile tile--side float" style="--d:0"><svg><use href="#i-doc"/></svg><span>Заказ-наряд</span></div>
+              <div class="tile tile--lg tile--center tile--red"><svg><use href="#i-shield"/></svg></div>
+              <div class="tile tile--side float" style="--d:2"><svg><use href="#i-camera"/></svg><span>Фотоотчёт</span></div>
+              <div class="chips-mini">
+                <span class="float" style="--d:1">12 мес.</span>
+                <span class="float" style="--d:3">Чек</span>
+              </div>
+            </div>
+            <div class="bento__body">
+              <h3>Гарантия на&nbsp;работы</h3>
+              <p>Каждый ремонт оформляем заказ-нарядом. Гарантия на&nbsp;работы — 12&nbsp;месяцев (пример), на&nbsp;запчасти — по&nbsp;условиям производителя.</p>
+            </div>
+          </article>
+
+          <article class="bento__card">
+            <div class="bento__art art-team" aria-hidden="true">
+              <div class="team">
+                <span class="av av--1">АК</span><span class="av av--blank"></span><span class="av av--2">ДМ</span><span class="av av--blank"></span><span class="av av--3">ИС</span>
+                <span class="av av--4">ОП</span><span class="team__logo"><svg><use href="#i-gear"/></svg>Гараж 360</span><span class="av av--5">РВ</span>
+                <span class="av av--6">ЕТ</span><span class="av av--blank"></span><span class="av av--7">НЛ</span><span class="av av--blank"></span><span class="av av--8">СБ</span>
+              </div>
+            </div>
+            <div class="bento__body">
+              <h3>Команда мастеров</h3>
+              <p>Диагносты, электрики, специалисты по&nbsp;ходовой и&nbsp;шиномонтажу. Каждый занимается своим участком работ.</p>
+            </div>
+          </article>
+        </div>
+
+        <ul class="stats" data-reveal-group aria-label="Сервис в цифрах">
+          <!-- Цифры — пример. ЗАМЕНИТЬ в атрибуте data-count и в тексте -->
+          <li class="stat"><p class="stat__num"><span data-count="12">12</span><span class="stat__unit">лет</span></p><p class="stat__label">опыта мастеров</p></li>
+          <li class="stat"><p class="stat__num"><span data-count="8470">8&nbsp;470</span><span class="stat__unit">+</span></p><p class="stat__label">выполненных работ</p></li>
+          <li class="stat"><p class="stat__num"><span data-count="12">12</span><span class="stat__unit">мес.</span></p><p class="stat__label">гарантия на&nbsp;работы</p></li>
+          <li class="stat"><p class="stat__num"><span data-count="14">14</span><span class="stat__unit">мин</span></p><p class="stat__label">перезваниваем после заявки</p></li>
+        </ul>
+        <p class="note note--center">Цифры — пример для демонстрации.</p>
+      </div>
+    </section>
+
+    <!-- 4. ПОЧЕМУ МЫ: тёмный блок -->
+    <section class="section section--flush" aria-labelledby="why-title">
+      <div class="dark-block">
+        <div class="why__banner" data-reveal>
+          <!-- Декоративный баннер из CSS/SVG. Можно заменить на фото цеха: background-image в .why__banner -->
+          <svg class="why__wheel" viewBox="0 0 200 200" aria-hidden="true">
+            <circle cx="100" cy="100" r="92" class="w-tire"/>
+            <circle cx="100" cy="100" r="62" class="w-rim"/>
+            <g class="w-spokes"><path d="M100 40v120M40 100h120M57.6 57.6l84.8 84.8M142.4 57.6l-84.8 84.8"/></g>
+            <circle cx="100" cy="100" r="44" class="w-disc"/>
+            <path d="M58 70a50 50 0 0 1 30-26" class="w-caliper"/>
+            <circle cx="100" cy="100" r="13" class="w-hub"/>
+          </svg>
+          <div class="why__banner-text">
+            <p class="pill pill--dark"><svg aria-hidden="true"><use href="#i-badge"/></svg>Почему мы</p>
+            <h2 class="section__title section__title--light" id="why-title">Опытные мастера и&nbsp;оборудование дилерского уровня</h2>
+          </div>
+        </div>
+        <ul class="why__cards" data-reveal-group>
+          <li class="why-card"><h3>Цена до&nbsp;ремонта</h3><p>Фиксируем смету после диагностики. Если нашли что-то ещё — сначала звоним и&nbsp;согласуем.</p></li>
+          <li class="why-card"><h3>Фотоотчёт в&nbsp;мессенджер</h3><p>Присылаем фото и&nbsp;видео процесса: что было, что заменили, как стало.</p></li>
+          <li class="why-card"><h3>Запчасти на&nbsp;выбор</h3><p>Оригинал или проверенные аналоги — предложим варианты по&nbsp;цене и&nbsp;срокам. Можно со&nbsp;своими.</p></li>
+          <li class="why-card"><h3>Старые детали — вам</h3><p>Отдаём снятые запчасти, чтобы вы&nbsp;видели, за&nbsp;что заплатили.</p></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 5. УСЛУГИ И ЦЕНЫ: тёмный блок -->
+    <section class="section section--flush" id="services" aria-labelledby="services-title">
+      <div class="dark-block dark-block--services">
+        <header class="section__head section__head--center" data-reveal>
+          <p class="pill pill--dark"><svg aria-hidden="true"><use href="#i-wrench"/></svg>Услуги</p>
+          <h2 class="section__title section__title--light" id="services-title">Услуги и&nbsp;цены</h2>
+          <p class="section__lead section__lead--light">Точную цену называем после диагностики. Цены ниже — пример.</p>
+        </header>
+        <!-- ЗАМЕНИТЬ: цены «от X ₽». data-service — значение для формы записи -->
+        <ul class="svc-grid" data-reveal-group>
+          <li class="svc svc--wide">
+            <p class="svc__cat">Диагностика</p>
+            <h3 class="svc__title"><span class="svc__icon" aria-hidden="true"><svg><use href="#i-wrench"/></svg></span>Диагностика на&nbsp;подъёмнике</h3>
+            <p class="svc__text">Ходовая, тормоза, утечки, состояние узлов. Отчёт с&nbsp;фото и&nbsp;списком работ по&nbsp;приоритету.</p>
+            <ul class="svc__list" aria-label="Что входит в диагностику">
+              <li>Осмотр на&nbsp;подъёмнике снизу</li>
+              <li>Тормоза, подвеска, рулевое</li>
+              <li>Утечки масла и&nbsp;жидкостей</li>
+              <li>Фотоотчёт в&nbsp;мессенджер</li>
+            </ul>
+            <p class="svc__price">от <b>1&nbsp;000&nbsp;₽</b></p>
+            <a class="svc__go" href="#booking" data-service="Диагностика" aria-label="Записаться: диагностика"><svg aria-hidden="true"><use href="#i-go"/></svg></a>
+          </li>
+          <li class="svc svc--wide">
+            <p class="svc__cat">Обслуживание</p>
+            <h3 class="svc__title"><span class="svc__icon" aria-hidden="true"><svg><use href="#i-oil"/></svg></span>Замена масла и&nbsp;ТО</h3>
+            <p class="svc__text">Масло, фильтры, жидкости и&nbsp;проверка по&nbsp;регламенту производителя. Сохраняем историю обслуживания.</p>
+            <p class="svc__price">от <b>1&nbsp;500&nbsp;₽</b></p>
+            <a class="svc__go" href="#booking" data-service="Замена масла и ТО" aria-label="Записаться: замена масла и ТО"><svg aria-hidden="true"><use href="#i-go"/></svg></a>
+          </li>
+          <li class="svc">
+            <p class="svc__cat">Подвеска</p>
+            <h3 class="svc__title"><span class="svc__icon" aria-hidden="true"><svg><use href="#i-susp"/></svg></span>Ремонт ходовой</h3>
+            <p class="svc__text">Амортизаторы, рычаги, сайлентблоки, ступичные подшипники, рулевые тяги.</p>
+            <p class="svc__price">от <b>2&nbsp;000&nbsp;₽</b></p>
+            <a class="svc__go" href="#booking" data-service="Ремонт ходовой" aria-label="Записаться: ремонт ходовой"><svg aria-hidden="true"><use href="#i-go"/></svg></a>
+          </li>
+          <li class="svc">
+            <p class="svc__cat">Безопасность</p>
+            <h3 class="svc__title"><span class="svc__icon" aria-hidden="true"><svg><use href="#i-brake"/></svg></span>Тормозная система</h3>
+            <p class="svc__text">Колодки, диски, суппорты, замена тормозной жидкости и&nbsp;прокачка.</p>
+            <p class="svc__price">от <b>1&nbsp;200&nbsp;₽</b></p>
+            <a class="svc__go" href="#booking" data-service="Тормозная система" aria-label="Записаться: тормозная система"><svg aria-hidden="true"><use href="#i-go"/></svg></a>
+          </li>
+          <li class="svc">
+            <p class="svc__cat">Колёса</p>
+            <h3 class="svc__title"><span class="svc__icon" aria-hidden="true"><svg><use href="#i-wheel"/></svg></span>Шиномонтаж</h3>
+            <p class="svc__text">Сезонная переобувка, балансировка, ремонт проколов, хранение шин.</p>
+            <p class="svc__price">от <b>1&nbsp;600&nbsp;₽</b></p>
+            <a class="svc__go" href="#booking" data-service="Шиномонтаж" aria-label="Записаться: шиномонтаж"><svg aria-hidden="true"><use href="#i-go"/></svg></a>
+          </li>
+          <li class="svc svc--wide">
+            <p class="svc__cat">Электроника</p>
+            <h3 class="svc__title"><span class="svc__icon" aria-hidden="true"><svg><use href="#i-chip"/></svg></span>Компьютерная диагностика</h3>
+            <p class="svc__text">Считывание ошибок всех блоков, живые параметры двигателя, понятная расшифровка.</p>
+            <p class="svc__price">от <b>800&nbsp;₽</b></p>
+            <a class="svc__go" href="#booking" data-service="Компьютерная диагностика" aria-label="Записаться: компьютерная диагностика"><svg aria-hidden="true"><use href="#i-go"/></svg></a>
+          </li>
+          <li class="svc svc--wide">
+            <p class="svc__cat">Электрика</p>
+            <h3 class="svc__title"><span class="svc__icon" aria-hidden="true"><svg><use href="#i-bolt"/></svg></span>Автоэлектрика</h3>
+            <p class="svc__text">Проводка, стартер, генератор, освещение, установка дополнительного оборудования.</p>
+            <p class="svc__price">от <b>1&nbsp;000&nbsp;₽</b></p>
+            <a class="svc__go" href="#booking" data-service="Автоэлектрика" aria-label="Записаться: автоэлектрика"><svg aria-hidden="true"><use href="#i-go"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 6. КАЛЬКУЛЯТОР -->
+    <section class="section" id="calc" aria-labelledby="calc-title">
+      <div class="container">
+        <header class="section__head section__head--center" data-reveal>
+          <p class="pill"><svg aria-hidden="true"><use href="#i-doc"/></svg>Калькулятор</p>
+          <h2 class="section__title" id="calc-title">Прикиньте стоимость за&nbsp;10&nbsp;секунд</h2>
+          <p class="section__lead">Ориентировочная цена работ без учёта запчастей. Значения — пример.</p>
+        </header>
+
+        <form class="calc" id="calc-form" data-reveal>
+          <fieldset class="calc__side">
+            <legend class="calc__legend">Услуга</legend>
+            <!-- Список услуг и базовые цены задаются в script.js (CALC_PRICES) -->
+            <div class="calc__services" id="calc-services"></div>
+          </fieldset>
+
+          <div class="calc__main">
+            <fieldset class="seg">
+              <legend class="calc__legend">Класс автомобиля</legend>
+              <div class="seg__opts">
+                <label class="seg__opt"><input type="radio" name="carClass" value="sedan" checked><span>Седан</span></label>
+                <label class="seg__opt"><input type="radio" name="carClass" value="crossover"><span>Кроссовер</span></label>
+                <label class="seg__opt"><input type="radio" name="carClass" value="suv"><span>Внедорожник</span></label>
+              </div>
+            </fieldset>
+
+            <div class="calc__result" aria-live="polite">
+              <p class="calc__label">Ориентировочно</p>
+              <p class="calc__price">от <output id="calc-output">1 000</output>&nbsp;₽</p>
+              <p class="calc__desc" id="calc-desc"></p>
+              <p class="note">Пример расчёта. Точная цена — после диагностики.</p>
+            </div>
+
+            <a class="btn btn--red btn--lg btn--block" href="#booking" id="calc-book">
+              <span class="btn__sq" aria-hidden="true"><svg><use href="#i-go"/></svg></span>
+              Записаться на&nbsp;эту услугу
+            </a>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- 7. КАК МЫ РАБОТАЕМ -->
+    <section class="section section--white" id="process" aria-labelledby="process-title">
+      <div class="container">
+        <header class="section__head section__head--center" data-reveal>
+          <p class="pill"><svg aria-hidden="true"><use href="#i-gear"/></svg>Процесс</p>
+          <h2 class="section__title" id="process-title">Как мы работаем</h2>
+        </header>
+
+        <div class="steps">
+          <svg class="steps__line steps__line--v" viewBox="0 0 4 100" preserveAspectRatio="none" aria-hidden="true">
+            <line class="steps__track" x1="2" y1="0" x2="2" y2="100"/>
+            <line class="steps__draw" x1="2" y1="0" x2="2" y2="100" pathLength="1"/>
+          </svg>
+          <svg class="steps__line steps__line--h" viewBox="0 0 100 4" preserveAspectRatio="none" aria-hidden="true">
+            <line class="steps__track" x1="0" y1="2" x2="100" y2="2"/>
+            <line class="steps__draw" x1="0" y1="2" x2="100" y2="2" pathLength="1"/>
+          </svg>
+          <ol class="steps__list" data-reveal-group>
+            <li class="step"><span class="step__dot" aria-hidden="true">01</span><h3 class="step__title">Заявка</h3><p class="step__text">Оставляете заявку на&nbsp;сайте или звоните. Подбираем удобное время.</p></li>
+            <li class="step"><span class="step__dot" aria-hidden="true">02</span><h3 class="step__title">Диагностика</h3><p class="step__text">Мастер осматривает машину и&nbsp;показывает, что нужно сделать в&nbsp;первую очередь.</p></li>
+            <li class="step"><span class="step__dot" aria-hidden="true">03</span><h3 class="step__title">Согласование цены</h3><p class="step__text">Фиксируем стоимость работ и&nbsp;запчастей. Без вашего «да» не&nbsp;начинаем.</p></li>
+            <li class="step"><span class="step__dot" aria-hidden="true">04</span><h3 class="step__title">Ремонт</h3><p class="step__text">Делаем работу в&nbsp;срок и&nbsp;присылаем фото процесса в&nbsp;мессенджер.</p></li>
+            <li class="step"><span class="step__dot" aria-hidden="true">05</span><h3 class="step__title">Выдача</h3><p class="step__text">Показываем заменённые детали, выдаём заказ-наряд и&nbsp;гарантию.</p></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. МАРКИ: боковое меню + слайдер -->
+    <section class="section" id="brands" aria-labelledby="brands-title">
+      <div class="container">
+        <div class="brands" data-reveal>
+          <nav class="brands__side" aria-label="Группы марок">
+            <p class="brands__side-title">Все группы</p>
+            <ul class="brands__tabs" id="brand-tabs"></ul>
+          </nav>
+          <div class="brands__main">
+            <p class="pill"><svg aria-hidden="true"><use href="#i-badge"/></svg>Марки</p>
+            <h2 class="section__title" id="brands-title">С&nbsp;какими марками работаем</h2>
+            <p class="section__lead">Обслуживаем легковые автомобили и&nbsp;кроссоверы большинства марок на&nbsp;российском рынке.</p>
+            <!-- Группы и марки задаются в script.js (BRAND_GROUPS). ЗАМЕНИТЬ под специализацию клиента -->
+            <div class="brands__viewport">
+              <ul class="brands__track" id="brand-track" aria-live="polite"></ul>
+            </div>
+            <div class="brands__nav">
+              <div class="brands__progress"><span id="brand-progress"></span></div>
+              <button class="round-btn" type="button" id="brand-prev" aria-label="Предыдущая группа"><svg aria-hidden="true"><use href="#i-left"/></svg></button>
+              <button class="round-btn" type="button" id="brand-next" aria-label="Следующая группа"><svg aria-hidden="true"><use href="#i-right"/></svg></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. ОТЗЫВЫ И ФОТО РАБОТ: тёмный блок -->
+    <section class="section section--flush" id="reviews" aria-labelledby="reviews-title">
+      <div class="dark-block">
+        <header class="section__head section__head--center" data-reveal>
+          <p class="pill pill--dark"><svg aria-hidden="true"><use href="#i-chat"/></svg>Отзывы</p>
+          <h2 class="section__title section__title--light" id="reviews-title">Клиенты нас рекомендуют</h2>
+        </header>
+
+        <!--
+          ЗАМЕНИТЬ: заглушки фото работ на реальные фото.
+          Положите файлы в assets/img/works/ и замените каждый <div class="photo">…</div> на:
+          <img class="photo" src="assets/img/works/work-1.jpg" alt="Замена тормозных дисков" width="800" height="600" loading="lazy">
+        -->
+        <ul class="photos" data-reveal-group aria-label="Фото работ">
+          <li><div class="photo" role="img" aria-label="Заглушка: место для фото работы"><svg aria-hidden="true"><use href="#i-camera"/></svg><span>Фото работы</span></div></li>
+          <li><div class="photo" role="img" aria-label="Заглушка: место для фото работы"><svg aria-hidden="true"><use href="#i-camera"/></svg><span>Фото работы</span></div></li>
+          <li><div class="photo" role="img" aria-label="Заглушка: место для фото работы"><svg aria-hidden="true"><use href="#i-camera"/></svg><span>Фото работы</span></div></li>
+          <li><div class="photo" role="img" aria-label="Заглушка: место для фото работы"><svg aria-hidden="true"><use href="#i-camera"/></svg><span>Фото работы</span></div></li>
+        </ul>
+
+        <!-- ЗАМЕНИТЬ: отзывы-примеры на реальные (с согласия клиентов) -->
+        <div class="reviews" data-reveal-group>
+          <figure class="review">
+            <span class="badge">пример</span>
+            <p class="review__stars" aria-label="Оценка 5 из 5">★★★★★</p>
+            <blockquote>«Приехал со&nbsp;стуком в&nbsp;подвеске. Показали люфт прямо на&nbsp;подъёмнике, назвали цену — ровно столько и&nbsp;заплатил.»</blockquote>
+            <figcaption><b>Артём К.</b><span>Kia Rio</span></figcaption>
+          </figure>
+          <figure class="review">
+            <span class="badge">пример</span>
+            <p class="review__stars" aria-label="Оценка 5 из 5">★★★★★</p>
+            <blockquote>«Записалась через сайт на&nbsp;ТО, перезвонили через 10&nbsp;минут. Скидывали фото в&nbsp;мессенджер, всё понятно даже мне. Отдельное спасибо за&nbsp;кофе в&nbsp;зоне ожидания.»</blockquote>
+            <figcaption><b>Ольга М.</b><span>Hyundai Creta</span></figcaption>
+          </figure>
+          <figure class="review">
+            <span class="badge">пример</span>
+            <p class="review__stars" aria-label="Оценка 5 из 5">★★★★★</p>
+            <blockquote>«Поменяли колодки и&nbsp;диски, отдали старые детали. Через месяц заехал на&nbsp;проверку — бесплатно.»</blockquote>
+            <figcaption><b>Денис В.</b><span>Toyota RAV4</span></figcaption>
+          </figure>
+          <figure class="review">
+            <span class="badge">пример</span>
+            <p class="review__stars" aria-label="Оценка 5 из 5">★★★★★</p>
+            <blockquote>«Другой сервис насчитал ремонт на&nbsp;35 тысяч. Здесь сделали диагностику и&nbsp;заменили только то, что действительно нужно.»</blockquote>
+            <figcaption><b>Игорь С.</b><span>Volkswagen Polo</span></figcaption>
+          </figure>
+          <figure class="review">
+            <span class="badge">пример</span>
+            <p class="review__stars" aria-label="Оценка 5 из 5">★★★★★</p>
+            <blockquote>«Переобулись за&nbsp;40 минут по&nbsp;записи, без очереди. Шины оставили на&nbsp;хранение.»</blockquote>
+            <figcaption><b>Марина Л.</b><span>Haval Jolion</span></figcaption>
+          </figure>
+          <figure class="review">
+            <span class="badge">пример</span>
+            <p class="review__stars" aria-label="Оценка 5 из 5">★★★★★</p>
+            <blockquote>«Нашли причину плавающих оборотов, которую не&nbsp;могли найти полгода. Объяснили, что было не&nbsp;так, на&nbsp;пальцах.»</blockquote>
+            <figcaption><b>Сергей П.</b><span>LADA Vesta</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. FAQ -->
+    <section class="section" id="faq" aria-labelledby="faq-title">
+      <div class="container">
+        <div class="faq" data-reveal>
+          <p class="faq__eyebrow">FAQ</p>
+          <h2 class="faq__title" id="faq-title">Частые вопросы</h2>
+          <p class="faq__aside">Не нашли свой вопрос? Позвоните — мастер ответит по&nbsp;телефону или подскажет, нужна ли диагностика.</p>
+          <a class="text-link faq__call" href="tel:+70000000000"><svg aria-hidden="true"><use href="#i-phone"/></svg><span>+7 000 000-00-00</span></a>
+          <div class="faq__list">
+            <details class="faq__item" name="faq">
+              <summary>Можно приехать со&nbsp;своими запчастями?<svg aria-hidden="true"><use href="#i-chev"/></svg></summary>
+              <div class="faq__body"><p>Да. Установим ваши запчасти, но&nbsp;гарантия в&nbsp;этом случае распространяется только на&nbsp;работу. Можем подобрать запчасти и&nbsp;сами — оригинал или проверенные аналоги.</p></div>
+            </details>
+            <details class="faq__item" name="faq">
+              <summary>Цена может вырасти в&nbsp;процессе ремонта?<svg aria-hidden="true"><use href="#i-chev"/></svg></summary>
+              <div class="faq__body"><p>Без вашего согласия — нет. Если в&nbsp;процессе нашли что-то ещё, звоним, показываем фото и&nbsp;согласуем отдельно.</p></div>
+            </details>
+            <details class="faq__item" name="faq">
+              <summary>Какая гарантия на&nbsp;работы?<svg aria-hidden="true"><use href="#i-chev"/></svg></summary>
+              <div class="faq__body"><p>Гарантия на&nbsp;работы — 12&nbsp;месяцев (пример), на&nbsp;запчасти — по&nbsp;условиям производителя. Всё фиксируется в&nbsp;заказ-наряде.</p></div>
+            </details>
+            <details class="faq__item" name="faq">
+              <summary>Сколько времени занимает диагностика?<svg aria-hidden="true"><use href="#i-chev"/></svg></summary>
+              <div class="faq__body"><p>Обычно 30–60&nbsp;минут. Можно подождать в&nbsp;зоне отдыха — есть кофе и&nbsp;Wi-Fi.</p></div>
+            </details>
+            <details class="faq__item" name="faq">
+              <summary>Как оплатить?<svg aria-hidden="true"><use href="#i-chev"/></svg></summary>
+              <div class="faq__body"><p>Наличными, картой или переводом. Для юрлиц — по&nbsp;безналу с&nbsp;закрывающими документами.</p></div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. ОНЛАЙН-ЗАПИСЬ -->
+    <section class="booking-wrap" id="booking" aria-labelledby="booking-title">
+      <div class="booking" data-reveal>
+        <div class="booking__intro">
+          <p class="pill"><svg aria-hidden="true"><use href="#i-phone"/></svg>Запись</p>
+          <h2 class="booking__title" id="booking-title">Расскажите, что с&nbsp;машиной</h2>
+          <p class="booking__lead">Перезвоним в&nbsp;рабочее время и&nbsp;подтвердим время визита.</p>
+          <p class="booking__or">Заполните форму или</p>
+          <a class="btn btn--soft" href="tel:+70000000000">
+            <span class="btn__sq" aria-hidden="true"><svg><use href="#i-phone"/></svg></span>
+            Позвоните нам
+          </a>
+        </div>
+
+        <div class="booking__card">
+          <!--
+            Отправка формы сейчас — заглушка (script.js, функция submitBooking).
+            ЗАМЕНИТЬ: подключить отправку в Telegram-бота, на почту или в CRM клиента.
+          -->
+          <form class="form" id="booking-form" novalidate>
+            <div class="form__grid">
+              <div class="field">
+                <label class="field__label" for="f-name">Имя <span aria-hidden="true">*</span></label>
+                <input class="field__control" id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="f-name-err" placeholder="Как к вам обращаться">
+                <p class="field__error" id="f-name-err"></p>
+              </div>
+              <div class="field">
+                <label class="field__label" for="f-phone">Телефон <span aria-hidden="true">*</span></label>
+                <input class="field__control" id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required aria-describedby="f-phone-err" placeholder="+7 (___) ___-__-__">
+                <p class="field__error" id="f-phone-err"></p>
+              </div>
+              <div class="field">
+                <label class="field__label" for="f-car">Марка и модель <span aria-hidden="true">*</span></label>
+                <input class="field__control" id="f-car" name="car" type="text" required aria-describedby="f-car-err" placeholder="Например, Kia Rio 2018">
+                <p class="field__error" id="f-car-err"></p>
+              </div>
+              <div class="field">
+                <label class="field__label" for="f-service">Услуга <span aria-hidden="true">*</span></label>
+                <select class="field__control" id="f-service" name="service" required aria-describedby="f-service-err">
+                  <option value="">Выберите услугу</option>
+                  <option>Диагностика</option>
+                  <option>Замена масла и ТО</option>
+                  <option>Ремонт ходовой</option>
+                  <option>Тормозная система</option>
+                  <option>Шиномонтаж</option>
+                  <option>Компьютерная диагностика</option>
+                  <option>Автоэлектрика</option>
+                  <option>Другое</option>
+                </select>
+                <p class="field__error" id="f-service-err"></p>
+              </div>
+              <div class="field">
+                <label class="field__label" for="f-date">Желаемая дата <span aria-hidden="true">*</span></label>
+                <input class="field__control" id="f-date" name="date" type="date" required aria-describedby="f-date-err">
+                <p class="field__error" id="f-date-err"></p>
+              </div>
+              <div class="field field--wide">
+                <label class="field__label" for="f-comment">Комментарий</label>
+                <textarea class="field__control" id="f-comment" name="comment" rows="3" maxlength="1000" placeholder="Что беспокоит в машине?"></textarea>
+              </div>
+            </div>
+
+            <div class="consent">
+              <input id="f-consent" name="consent" type="checkbox" required aria-describedby="f-consent-err">
+              <!-- ЗАМЕНИТЬ: href на страницу политики обработки персональных данных -->
+              <label for="f-consent">Согласен на&nbsp;обработку персональных данных в&nbsp;соответствии с&nbsp;<a href="#" data-stub>политикой конфиденциальности</a></label>
+              <p class="field__error" id="f-consent-err"></p>
+            </div>
+
+            <div class="form__foot">
+              <button class="btn btn--red btn--lg" type="submit">
+                <span class="btn__sq" aria-hidden="true"><svg><use href="#i-send"/></svg></span>
+                Отправить заявку
+              </button>
+              <p class="note">Демо: заявка никуда не&nbsp;отправляется.</p>
+            </div>
+          </form>
+
+          <div class="form-success" id="booking-success" hidden tabindex="-1">
+            <svg class="form-success__icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M7.5 12.5l3 3 6-6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <h3>Спасибо, мы перезвоним</h3>
+            <p>Заявка принята. Обычно перезваниваем в&nbsp;течение 15&nbsp;минут в&nbsp;рабочее время.</p>
+            <button class="btn btn--soft" type="button" id="booking-again">Отправить ещё одну заявку</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 12. КОНТАКТЫ + ПОДВАЛ -->
+  <footer class="footer" id="contacts" aria-labelledby="contacts-title">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand" data-reveal>
+          <a class="logo logo--lg" href="#top" aria-label="Гараж 360 — наверх">
+            <span class="logo__mark" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-gear"/></svg></span>
+            <span class="logo__text">Гараж <b>360</b></span>
+          </a>
+          <h2 class="footer__title" id="contacts-title">Контакты</h2>
+          <!-- ЗАМЕНИТЬ: телефон, адрес, часы работы -->
+          <ul class="contact-pills">
+            <li><a class="cpill" href="tel:+70000000000"><svg aria-hidden="true"><use href="#i-phone"/></svg>+7 000 000-00-00</a></li>
+            <li><span class="cpill"><svg aria-hidden="true"><use href="#i-pin"/></svg>г. Город, ул. Примерная, 0 <span class="badge badge--dark">пример</span></span></li>
+            <li><span class="cpill"><svg aria-hidden="true"><use href="#i-clock"/></svg>Пн–Пт 9:00–20:00 · Сб–Вс 10:00–18:00</span></li>
+          </ul>
+          <!--
+            ЗАМЕНИТЬ: href="#" на реальные ссылки и убрать атрибут data-stub:
+            Telegram — https://t.me/имя_аккаунта · WhatsApp — https://wa.me/79XXXXXXXXX · ВКонтакте — https://vk.com/имя_сообщества
+          -->
+          <div class="messengers">
+            <a class="msg" href="#" data-stub aria-label="Написать в Telegram">Telegram</a>
+            <a class="msg" href="#" data-stub aria-label="Написать в WhatsApp">WhatsApp</a>
+            <a class="msg" href="#" data-stub aria-label="Сообщество во ВКонтакте">ВКонтакте</a>
+          </div>
+        </div>
+
+        <!--
+          ЗАМЕНИТЬ: блок-заглушку карты на виджет Яндекс Карт
+          (конструктор: https://yandex.ru/map-constructor/ → «Получить код» → вставить iframe вместо div.map).
+        -->
+        <div class="map" role="img" aria-label="Заглушка: здесь будет карта проезда" data-reveal>
+          <div class="map__grid" aria-hidden="true"></div>
+          <span class="map__pulse" aria-hidden="true"></span>
+          <svg class="map__pin" aria-hidden="true"><use href="#i-pin"/></svg>
+          <p class="map__label">Здесь будет карта</p>
+        </div>
+
+        <nav class="footer__cols" aria-label="Навигация в подвале">
+          <div>
+            <p class="footer__h">Сервис</p>
+            <ul>
+              <li><a href="#about">О&nbsp;сервисе</a></li>
+              <li><a href="#process">Как работаем</a></li>
+              <li><a href="#reviews">Отзывы</a></li>
+              <li><a href="#faq">Вопросы</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="footer__h">Услуги</p>
+            <ul>
+              <li><a href="#services">Все услуги</a></li>
+              <li><a href="#calc">Калькулятор</a></li>
+              <li><a href="#brands">Марки</a></li>
+              <li><a href="#booking">Запись</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+
+      <div class="footer__bottom">
+        <p>© <span id="year">2026</span> Гараж 360</p>
+        <p class="footer__demo">Демо-проект. Все данные вымышлены. 3D-модель: Kenney (CC0).</p>
+        <a href="#" data-stub>Политика конфиденциальности</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/vendor/anime.umd.min.js" defer></script>
+  <script src="script.js" defer></script>
+  <!-- 3D-сцена: three.js и модель грузятся после основного контента -->
+  <script src="assets/vendor/three-lite.min.js" defer></script>
+  <script src="assets/models/car-sedan.js" defer></script>
+  <script src="assets/js/hero3d.js" defer></script>
+</body>
+</html>

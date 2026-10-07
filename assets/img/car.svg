@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 220" width="560" height="220" role="img" aria-label="Красный седан в профиль">
+  <ellipse cx="282" cy="202" rx="250" ry="12" fill="#000" opacity=".35"/>
+  <path fill="#E5383B" stroke="#A9262A" stroke-width="2" d="M30 150 L30 126 Q32 108 55 104 L150 92 L205 54 Q216 45 234 45 L358 45 Q378 45 392 56 L445 95 L505 104 Q530 108 534 128 L536 150 Q536 160 526 160 L470 160 A48 48 0 0 0 374 160 L190 160 A48 48 0 0 0 94 160 L40 160 Q30 160 30 150 Z"/>
+  <path fill="#1F2328" stroke="#A9262A" stroke-width="2" d="M170 97 L214 62 Q221 56 232 56 L284 56 L284 97 Z"/>
+  <path fill="#1F2328" stroke="#A9262A" stroke-width="2" d="M296 56 L354 56 Q368 56 378 64 L422 97 L296 97 Z"/>
+  <path fill="none" stroke="#A9262A" stroke-width="2" stroke-linecap="round" d="M290 100 L290 156 M178 100 L178 140 Q178 152 190 154"/>
+  <path fill="#FFFFFF" opacity=".25" d="M60 104 L500 104 L503 108 L58 108 Z"/>
+  <rect x="506" y="114" width="24" height="10" rx="4" fill="#FFF3D6"/>
+  <rect x="32" y="114" width="12" height="12" rx="3" fill="#7A1214"/>
+  <g><circle cx="142" cy="160" r="40" fill="#121417"/><circle cx="142" cy="160" r="24" fill="#5B636D"/><circle cx="142" cy="160" r="7" fill="#121417"/></g>
+  <g><circle cx="422" cy="160" r="40" fill="#121417"/><circle cx="422" cy="160" r="24" fill="#5B636D"/><circle cx="422" cy="160" r="7" fill="#121417"/></g>
+</svg>
